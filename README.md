@@ -75,19 +75,7 @@ python src/exp1_pinn_snr.py
 jupyter notebook notebooks/exp1_pinn_snr.ipynb
 ```
 
-## Citação
 
-Se este trabalho contribuiu com sua pesquisa, cite como:
-
-```bibtex
-@software{vlc_digital_twin_2025,
-  title  = {VLC Digital Twin with NVIDIA PhysicsNeMo},
-  author = {Pesquisador VLC},
-  year   = {2025},
-  url    = {https://github.com/seu-usuario/vlc-digital-twin},
-  license = {Apache-2.0}
-}
-```
 
 ## Licença
 

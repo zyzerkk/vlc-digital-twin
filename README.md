@@ -204,12 +204,12 @@ Se este repositório for utilizado em trabalho acadêmico, por favor cite:
 
 ```bibtex
 @misc{vlc_digital_twin_2026,
-  author       = {Seu Nome},
+  author       = {Luís Otávio Guero},
   title        = {VLC Digital Twin: Physics-Informed Neural Networks para
                    Comunicação por Luz Visível},
   year         = {2026},
-  howpublished = {\url{https://github.com/seu-usuario/vlc-digital-twin}},
-  note         = {Acessado em: DATA}
+  howpublished = {\url{https://github.com/zyzerkk/vlc-digital-twin}},
+  note         = {Acessado em: Agosto/26}
 }
 ```
 
@@ -229,4 +229,4 @@ Distribuído sob a licença **Apache 2.0**. Consulte [`LICENSE`](LICENSE) para o
 ## Contato
 
 Dúvidas, sugestões ou relatos de erro: abra uma *issue* no repositório ou entre em contato via
-[e-mail/perfil a definir].
+[luis.guero@acad.ufsm.br].

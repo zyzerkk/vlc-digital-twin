@@ -1,12 +1,12 @@
 # VLC Digital Twin — Physics-Informed Neural Networks com NVIDIA PhysicsNeMo
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange.svg)](https://pytorch.org)
-[![NVIDIA PhysicsNeMo](https://img.shields.io/badge/NVIDIA-PhysicsNeMo-76b900.svg)](https://github.com/NVIDIA/physicsnemo)
-[![CI](https://github.com/zyzerkk/vlc-digital-twin/actions/workflows/ci.yml/badge.svg)](https://github.com/zyzerkk/vlc-digital-twin/actions)
-[![DOI](https://img.shields.io/badge/DOI-pending-lightgrey.svg)](#como-citar)
-[![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow.svg)](#)
+[![License](https://img.shields.io/badge/License-Apache%202.0-76b900.svg?logo=apache&logoColor=white)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-76b900.svg?logo=python&logoColor=white)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.x-76b900.svg?logo=pytorch&logoColor=white)](https://pytorch.org)
+[![NVIDIA PhysicsNeMo](https://img.shields.io/badge/NVIDIA-PhysicsNeMo-76b900.svg?logo=nvidia&logoColor=white)](https://github.com/NVIDIA/physicsnemo)
+[![CI](https://img.shields.io/badge/CI-workflows-76b900.svg?logo=githubactions&logoColor=white)](https://github.com/zyzerkk/vlc-digital-twin/actions)
+[![DOI](https://img.shields.io/badge/DOI-pending-76b900.svg)](#como-citar)
+[![Status](https://img.shields.io/badge/Status-em%20desenvolvimento-76b900.svg)](#)
 
 > **Redes Neurais Informadas por Física (PINNs) aplicadas à modelagem de Gêmeos Digitais para
 > canais de Comunicação por Luz Visível (Visible Light Communication — VLC)**

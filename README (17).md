@@ -6,7 +6,7 @@
 [![NVIDIA PhysicsNeMo](https://img.shields.io/badge/NVIDIA-PhysicsNeMo-76b900.svg?logo=nvidia&logoColor=white)](https://github.com/NVIDIA/physicsnemo)
 [![CI](https://img.shields.io/badge/CI-workflows-76b900.svg?logo=githubactions&logoColor=white)](https://github.com/zyzerkk/vlc-digital-twin/actions)
 [![DOI](https://img.shields.io/badge/DOI-pending-76b900.svg)](#como-citar)
-[![Status](https://img.shields.io/badge/Status-em%20desenvolvimento-76b900.svg)](#)
+[![Status](https://img.shields.io/badge/Status-Work%20in%20Progress%20(WIP)-76b900.svg)](#)
 
 > **Redes Neurais Informadas por Física (PINNs) aplicadas à modelagem de Gêmeos Digitais para
 > canais de Comunicação por Luz Visível (Visible Light Communication — VLC)**

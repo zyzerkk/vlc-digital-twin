@@ -5,7 +5,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-76b900.svg?logo=pytorch&logoColor=white)](https://pytorch.org)
 [![NVIDIA PhysicsNeMo](https://img.shields.io/badge/NVIDIA-PhysicsNeMo-76b900.svg?logo=nvidia&logoColor=white)](https://github.com/NVIDIA/physicsnemo)
 [![Colab](https://img.shields.io/badge/Run%20on-Google%20Colab-F9AB00.svg?logo=googlecolab&logoColor=white)](https://colab.research.google.com/)
-[![Status](https://img.shields.io/badge/Status-Work%20in%20Progress%20(WIP)-76b900.svg)](#)
+[![Status](https://img.shields.io/badge/Status-Work%20in%20Progress%20(WIP)-d32f2f.svg)](#)
 
 > **Redes Neurais Informadas por Física (PINNs) aplicadas à modelagem de Gêmeos Digitais para
 > canais de Comunicação por Luz Visível (Visible Light Communication — VLC)**

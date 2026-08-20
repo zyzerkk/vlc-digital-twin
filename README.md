@@ -4,9 +4,8 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-76b900.svg?logo=python&logoColor=white)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-76b900.svg?logo=pytorch&logoColor=white)](https://pytorch.org)
 [![NVIDIA PhysicsNeMo](https://img.shields.io/badge/NVIDIA-PhysicsNeMo-76b900.svg?logo=nvidia&logoColor=white)](https://github.com/NVIDIA/physicsnemo)
-[![CI](https://img.shields.io/badge/CI-workflows-76b900.svg?logo=githubactions&logoColor=white)](https://github.com/zyzerkk/vlc-digital-twin/actions)
-[![DOI](https://img.shields.io/badge/DOI-pending-76b900.svg)](#como-citar)
-[![Status](https://img.shields.io/badge/Status-Work%20in%20Progress%20(WIP)-d32f2f.svg)](#)
+[![Colab](https://img.shields.io/badge/Run%20on-Google%20Colab-F9AB00.svg?logo=googlecolab&logoColor=white)](https://colab.research.google.com/)
+[![Status](https://img.shields.io/badge/Status-Work%20in%20Progress%20(WIP)-76b900.svg)](#)
 
 > **Redes Neurais Informadas por Física (PINNs) aplicadas à modelagem de Gêmeos Digitais para
 > canais de Comunicação por Luz Visível (Visible Light Communication — VLC)**
@@ -29,37 +28,55 @@ construído sobre o ecossistema [NVIDIA PhysicsNeMo](https://github.com/NVIDIA/p
 derivadas do modelo de canal Lambertiano generalizado, permitindo que a rede neural respeite
 leis físicas conhecidas mesmo em regiões do domínio com poucos dados de treinamento.
 
-São apresentados cinco experimentos progressivos, do problema de predição de SNR em espaço livre
-até um Gêmeo Digital MIMO-VLC completo com quatro transmissores, sombreamento e reconstrução de
-campo de iluminância 3D.
+São apresentados **doze experimentos**, organizados em três notebooks progressivos: da validação
+inicial de PINNs em PyTorch puro, passando por um bloco de diagnóstico e estratégias avançadas de
+treinamento, até uma reimplementação completa usando a API nativa do NVIDIA PhysicsNeMo v2.0.
+
+---
+
+## Como executar — 100% via Google Colab
+
+Este repositório foi desenhado para ser executado **inteiramente no Google Colab**, sem
+necessidade de ambiente local, instalação manual de CUDA ou gerenciamento de ambiente virtual.
+Basta abrir o notebook desejado por um dos links abaixo, selecionar um runtime com GPU
+(`Ambiente de execução → Alterar tipo de ambiente de execução → GPU`) e rodar todas as células
+em sequência (`Ambiente de execução → Executar tudo`).
+
+| Notebook | Conteúdo | Abrir no Colab |
+|---|---|---|
+| `01_experimentos_fundamentais.ipynb` | EXP1–EXP3.3 — validação inicial das PINNs em PyTorch puro | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zyzerkk/vlc-digital-twin/blob/main/notebooks/01_experimentos_fundamentais.ipynb) |
+| `02_experimentos_avancados.ipynb` | EXP4–EXP7 — diagnóstico, ablação, curriculum e transfer learning | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zyzerkk/vlc-digital-twin/blob/main/notebooks/02_experimentos_avancados.ipynb) |
+| `03_physicsnemo_v2_nativo.ipynb` | EXP1-v2–EXP3.3-v2 — migração para a API nativa do PhysicsNeMo v2.0 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zyzerkk/vlc-digital-twin/blob/main/notebooks/03_physicsnemo_v2_nativo.ipynb) |
+
+> Os badges acima assumem o repositório publicado em `github.com/zyzerkk/vlc-digital-twin` na
+> branch `main`. Se o nome de usuário, repositório ou branch forem diferentes, atualize a URL
+> (`colab.research.google.com/github/<usuario>/<repo>/blob/<branch>/notebooks/<arquivo>.ipynb`).
+
+Não há scripts `.py` neste repositório e não há necessidade de instalação local: cada notebook
+instala suas próprias dependências na primeira célula (execução isolada por sessão do Colab).
 
 ---
 
 ## Contexto histórico da pesquisa
 
 > Esta seção documenta a trajetória real do projeto — incluindo os obstáculos enfrentados —
-> pois acreditamos que a transparência metodológica é parte da contribuição científica.
+> pois a transparência metodológica é tratada aqui como parte da contribuição científica.
 
 A pesquisa foi iniciada em **julho de 2023** no Google Colab, com o objetivo de integrar o
-framework NVIDIA Modulus (à época hospedado no GitLab) com canais VLC. Os principais obstáculos
-encontrados foram:
+framework NVIDIA Modulus (à época hospedado no GitLab) a um problema de canal VLC. Os principais
+obstáculos encontrados foram:
 
-**Problema 1 — Link GitLab offline**
-O repositório oficial da NVIDIA referenciado no tutorial estava inacessível (404). A solução
-foi localizar manualmente o repositório em fontes alternativas e, posteriormente, o projeto
-migrou para o GitHub em `github.com/NVIDIA/modulus`.
+**Problema 1 — Link GitLab offline.** O repositório oficial da NVIDIA referenciado no tutorial
+original estava inacessível (404). O projeto havia migrado para o GitHub, sem atualização
+amplamente divulgada do tutorial em uso na época.
 
-**Problema 2 — Incompatibilidade de versão Python**
-O ambiente padrão do Google Colab (Python 3.11 à época) era incompatível com as dependências
-do Modulus 22.09, que exigia Python ≤ 3.10. Tentativas de downgrade via ambiente conda no
-Colab resultaram em instabilidade. A solução adotada foi ajustar o ambiente manualmente.
+**Problema 2 — Incompatibilidade de versão Python.** O ambiente padrão do Google Colab (Python
+3.11 à época) era incompatível com as dependências do Modulus 22.09, que exigia Python ≤ 3.10.
 
-**Lição documentada:** A fixação de versões exatas em `requirements.txt` e o uso de ambientes
-virtuais isolados são essenciais para reprodutibilidade em projetos que dependem de frameworks
-de ML em evolução rápida.
-
-O repositório foi estruturado e formalizado em **agosto de 2026**, como parte do processo de
-submissão de artigo científico.
+O projeto foi retomado e formalizado em **agosto de 2026**, com a reimplementação completa dos
+experimentos fundamentais, a adição de um bloco de experimentos avançados de diagnóstico e a
+migração para a API nativa do PhysicsNeMo v2.0 — documentados nos três notebooks deste
+repositório.
 
 ---
 
@@ -83,35 +100,24 @@ uma vez treinados.
 
 ```
 vlc-digital-twin/
-├── notebooks/                 # Jupyter notebooks por experimento
-│   ├── exp1_pinn_snr.ipynb
-│   ├── exp2_modulation_classifier.ipynb
-│   ├── exp3_1_digital_twin_3d.ipynb
-│   ├── exp3_2_shadow_loss.ipynb
-│   └── exp3_3_mimo_vlc.ipynb
-├── src/                       # Scripts Python para execução local/reprodutível
-│   ├── exp1_pinn_snr.py
-│   ├── exp2_modulation_classifier.py
-│   ├── exp3_1_digital_twin_3d.py
-│   ├── exp3_2_shadow_loss.py
-│   └── exp3_3_mimo_vlc.py
+├── notebooks/
+│   ├── 01_experimentos_fundamentais.ipynb   # EXP1, EXP2, EXP3.1, EXP3.2, EXP3.3 (PyTorch puro)
+│   ├── 02_experimentos_avancados.ipynb      # EXP4, EXP5, EXP6, EXP7 (diagnóstico e ablação)
+│   └── 03_physicsnemo_v2_nativo.ipynb       # EXP1-v2 a EXP3.3-v2 (API nativa PhysicsNeMo v2.0)
+├── assets/                    # Figuras de resultado extraídas diretamente das execuções reais
 ├── docs/
 │   └── architecture.md        # Arquitetura das redes e fluxo de dados
-├── assets/                    # Figuras e gráficos gerados pelos experimentos
-├── .github/
-│   ├── workflows/ci.yml       # CI automático (lint + verificação de imports)
-│   └── ISSUE_TEMPLATE/        # Templates de bug report e feature request
-├── build_repo.py              # Gerador da estrutura completa (rodar localmente)
-├── EXPERIMENTS.md             # Descrição técnica detalhada de cada experimento
-├── CHANGELOG.md               # Histórico de versões
+├── EXPERIMENTS.md             # Descrição técnica detalhada dos 12 experimentos
+├── CHANGELOG.md                # Histórico de versões
 ├── CONTRIBUTING.md            # Guia de contribuição
 ├── CITATION.cff               # Metadados de citação (Citation File Format)
-├── requirements.txt           # Dependências Python
 └── LICENSE                    # Apache 2.0
 ```
 
-> **Nota:** Os arquivos em `notebooks/` e `src/` são gerados pelo script `build_repo.py`.
-> Para obter a estrutura completa localmente, execute `python build_repo.py` após clonar.
+Cada arquivo em `assets/` é nomeado com o prefixo do notebook de origem (`01_`, `02_`, `03_`)
+seguido do experimento correspondente, e corresponde exatamente às figuras geradas pela execução
+documentada nos notebooks — nenhuma imagem neste repositório foi gerada fora dos notebooks aqui
+publicados.
 
 ---
 
@@ -137,125 +143,106 @@ A rede neural `f_θ(x, y, z)` é treinada para aproximar a distribuição de SNR
 no espaço, minimizando uma função de perda composta:
 
 ```
-L(θ) = λ_data · L_data(θ) + λ_phys · L_phys(θ) + λ_bc · L_bc(θ)
+L(θ) = λ_dados · L_dados(θ) + λ_física · L_física(θ) + λ_contorno · L_contorno(θ)
 ```
 
-- **L_data**: erro quadrático médio entre a predição da rede e amostras observadas/simuladas
-- **L_phys**: resíduo da equação de canal Lambertiano, penalizando soluções fisicamente inconsistentes
-- **L_bc**: penalização de condições de contorno (bloqueio em sombra, continuidade nas bordas)
+- **L_dados**: erro quadrático médio entre a predição da rede e amostras observadas/simuladas
+- **L_física**: resíduo da equação de canal Lambertiano, penalizando soluções fisicamente inconsistentes
+- **L_contorno**: penalização de condições de contorno (bloqueio em sombra, continuidade nas bordas)
 
-Os pesos `λ_data`, `λ_phys`, `λ_bc` são hiperparâmetros ajustados por experimento — detalhes em
+Os pesos `λ_dados`, `λ_física`, `λ_contorno` são hiperparâmetros ajustados por experimento — detalhes em
 [`EXPERIMENTS.md`](EXPERIMENTS.md).
 
 ---
 
 ## Experimentos
 
-| # | Experimento | Script | Conceito-chave | Métrica |
-|---|-------------|--------|----------------|---------|
-| 1 | PINN para SNR Lambertiano | `exp1_pinn_snr.py` | Physics-Informed Loss | RMSE, MAE vs. analítico |
-| 2 | Classificador de Modulação VLC | `exp2_modulation_classifier.py` | Feature Engineering | Acurácia, F1-score |
-| 3.1 | Gêmeo Digital 3D | `exp3_1_digital_twin_3d.py` | Fourier Features / NeRF | PSNR, SSIM |
-| 3.2 | Sombreamento (LOS Blockage) | `exp3_2_shadow_loss.py` | Physics-Weighted Loss | RMSE em zona de sombra |
-| 3.3 | MIMO-VLC (4 LEDs) | `exp3_3_mimo_vlc.py` | Superposição + AdamW | PSNR, tempo de inferência |
+### Notebook 01 — Experimentos Fundamentais (PyTorch puro)
 
-Descrições completas em [`EXPERIMENTS.md`](EXPERIMENTS.md).
+| # | Experimento | Conceito-chave | Métrica principal |
+|---|-------------|-----------------|--------------------|
+| EXP1 | PINN para SNR Lambertiano | Physics-Informed Loss | RMSE ≈ 0,15–0,25 dB vs. modelo analítico |
+| EXP2 | Classificador de Modulação VLC | Feature Engineering (8 features) | 76% de acurácia geral (PPM-4/VPPM confundidos) |
+| EXP3.1 | Gêmeo Digital 3D | Fourier Features / Positional Encoding | Convergiu, mas heatmap com ruído espacial (ver limitações) |
+| EXP3.2 | Sombreamento (LOS Blockage) | Physics-Weighted Loss | Excelente aderência visual à sombra real |
+| EXP3.3 | MIMO-VLC (4 LEDs) | Superposição linear + AdamW | PSNR 35,91 dB (sem imagem salva nesta execução) |
+
+### Notebook 02 — Experimentos Avançados
+
+| # | Experimento | Conceito-chave | Métrica principal |
+|---|-------------|-----------------|--------------------|
+| EXP4 | Classificador v2 | Correção do gerador de dados + 12 features temporais | 95,6% de acurácia geral |
+| EXP5 | Ablation Study | PINN vs. MLP puro | PINN 19,4% melhor em RMSE |
+| EXP6 | Curriculum Learning | Ordenação por dificuldade | RMSE pior que ordem aleatória (resultado negativo) |
+| EXP7 | Transfer Learning | Fine-tuning para canal com interferência | Convergência ~10× mais rápida que treino do zero |
+
+### Notebook 03 — Migração para PhysicsNeMo v2.0 Nativo
+
+| # | Experimento | Conceito-chave | Métrica principal |
+|---|-------------|-----------------|--------------------|
+| EXP1-v2 | PINN SNR nativa | `physicsnemo.models.FullyConnected` | RMSE 0,2483 dB, treino mais estável |
+| EXP2-v2 | Classificador nativo | `FullyConnected` + skip connections | 95,9% de acurácia geral |
+| EXP3.1-v2 | Digital Twin 3D com FNO | Fourier Neural Operator | PSNR 71,7 dB no loss, porém campo espacial sem estrutura física coerente (falha identificada) |
+| EXP3.2-v2 | Sombreamento com peso adaptativo | Peso 1×→20× progressivo | Excelente aderência visual |
+| EXP3.3-v2 | MIMO-VLC com FNO | Análise automática de cobertura QoS | PSNR 27,64 dB no loss, porém campo sem estrutura física (regressão vs. v1) |
+
+Descrições completas, arquiteturas e análise crítica de cada experimento em [`EXPERIMENTS.md`](EXPERIMENTS.md).
 
 ---
 
 ## Resultados
 
-Experimentos executados no **Google Colab** com GPU T4 (agosto/2026).
-Imagens em [`assets/`](assets/).
+Todas as figuras abaixo foram geradas pela execução real dos notebooks (GPU Tesla T4, Google
+Colab, agosto de 2026) e estão disponíveis em [`assets/`](assets/).
 
 | | |
 |---|---|
-| ![EXP1](assets/resultado_exp1_snr_pinn.png) | ![EXP2](assets/resultado_exp2_classificador.png) |
-| **EXP1** — PINN SNR vs. modelo analítico | **EXP2** — Matriz de confusão do classificador |
-| ![EXP3.1](assets/resultado_exp3_1_digital_twin_3d.png) | ![EXP3.2](assets/resultado_exp3_2_sombreamento.png) |
-| **EXP3.1** — Gêmeo Digital 3D (Fourier Features) | **EXP3.2** — Sombreamento com Physics-Weighted Loss |
+| ![EXP1](assets/01_exp1_snr_pinn.png) | ![EXP2](assets/01_exp2_classificador.png) |
+| **EXP1** — PINN SNR vs. modelo analítico | **EXP2** — Matriz de confusão (baseline, PPM-4/VPPM confundidos) |
+| ![EXP4](assets/02_exp4_classificador_v2.png) | ![EXP1-v2](assets/03_exp1_v2_physicsnemo.png) |
+| **EXP4** — Classificador corrigido (95,6%) | **EXP1-v2** — PINN com PhysicsNeMo nativo |
 
-| Experimento | Métrica principal | Resultado |
-|-------------|-------------------|-----------|
-| EXP1 — PINN SNR | Curva PINN vs. analítico | Convergência visual excelente — curvas sobrepostas (MSE Loss ~10⁻⁵) |
-| EXP2 — Classificador | Acurácia por classe | OOK: 100% · PPM-8: 100% · PPM-4: 68% · VPPM: 38% (confusão PPM-4↔VPPM documentada) |
-| EXP3.1 — Digital Twin 3D | Loss final / mapa de calor | MSE ~2×10⁻⁴ após 1000 épocas; mapa gerado com Fourier Features (σ=2.0) |
-| EXP3.2 — Sombreamento | Sombra aprendida | Bloqueio LOS aprendido com Physics-Weighted Loss (penalidade 10×) |
-| EXP3.3 — MIMO-VLC | PSNR final | Campo de 4 LEDs modelado com AdamW — PSNR monitorado por época |
-
-Resultados visuais disponíveis em [`assets/`](assets/). Experimentos executados no Google Colab (GPU T4).
-
-*Para reproduzir: siga as instruções de instalação abaixo e rode cada script em `src/`.*
+> **Nota de transparência:** nem todos os resultados deste projeto foram bem-sucedidos, e isso é
+> documentado deliberadamente. Em particular, os experimentos EXP3.1-v2 e EXP3.3-v2 (migração
+> para FNO) reportam métricas de perda excelentes durante o treino, mas os campos espaciais
+> preditos não correspondem ao padrão físico esperado — um problema identificado, mas ainda em
+> aberto. Ver a seção de Limitações em [`EXPERIMENTS.md`](EXPERIMENTS.md) para o registro completo
+> de erros, resultados negativos e lições aprendidas.
 
 ---
 
-## Instalação e Reprodutibilidade
+## Reprodutibilidade
 
-### Requisitos
-
-- Python ≥ 3.10
-- PyTorch 2.x (GPU recomendada — CUDA 11.8+)
-- NVIDIA PhysicsNeMo — `physicsnemo` (opcional; experimentos rodam com PyTorch puro)
-
-### Instalação
-
-```bash
-# 1. Clonar o repositório
-git clone https://github.com/zyzerkk/vlc-digital-twin.git
-cd vlc-digital-twin
-
-# 2. Criar e ativar ambiente virtual
-python -m venv .venv
-source .venv/bin/activate        # Linux/macOS
-.venv\Scripts\activate           # Windows
-
-# 3. Instalar PyTorch com GPU (CUDA 11.8)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
-# 4. Instalar demais dependências
-pip install -r requirements.txt
-
-# 5. Gerar a estrutura completa (notebooks + scripts)
-python build_repo.py
-```
-
-### Execução
-
-```bash
-# Rodar um experimento individual
-python src/exp1_pinn_snr.py
-
-# Ou interativamente via Jupyter
-jupyter notebook notebooks/exp1_pinn_snr.ipynb
-```
-
-### Instalação do NVIDIA PhysicsNeMo (opcional)
-
-```bash
-# Repositório atual (migrou do GitLab para o GitHub)
-git clone https://github.com/NVIDIA/physicsnemo.git
-pip install -e physicsnemo
-```
-
-> **Nota histórica:** Em 2023, o repositório estava no GitLab (`gitlab.com/nvidia/modulus`)
-> e o link estava inacessível. Atualmente está no GitHub e a instalação via pip também funciona:
-> `pip install nvidia-physicsnemo`
-
-### Reprodutibilidade
-
-- Sementes aleatórias fixadas (`seed=42`) em todos os scripts
-- Versões de dependências fixadas em `requirements.txt`
-- Hiperparâmetros documentados por experimento em `EXPERIMENTS.md`
+- **Sementes aleatórias:** fixadas de forma completa (`torch.manual_seed(42)` e
+  `np.random.seed(42)`) nos notebooks `02_experimentos_avancados.ipynb` e
+  `03_physicsnemo_v2_nativo.ipynb`. No notebook `01_experimentos_fundamentais.ipynb`, apenas o
+  experimento EXP2 fixa `np.random.seed(42)` — os demais experimentos desse notebook (EXP1,
+  EXP3.1, EXP3.2, EXP3.3) não têm seed fixada, então reexecuções podem produzir curvas
+  ligeiramente diferentes das figuras publicadas em `assets/`, embora o comportamento qualitativo
+  (incluindo as limitações documentadas) seja consistente.
+- **Dependências:** cada notebook instala suas próprias dependências na primeira célula, com
+  versões apropriadas ao runtime do Google Colab no momento da execução (agosto de 2026). Não há
+  um `requirements.txt` único fixado por versão — execuções em datas muito posteriores podem
+  encontrar versões mais recentes de PyTorch/PhysicsNeMo com comportamento ligeiramente diferente.
+- **GPU:** os notebooks foram executados em GPU Tesla T4 (nível gratuito do Google Colab). Os
+  experimentos fundamentais (notebook 01) também rodam em CPU, com tempo de execução maior.
 
 ---
 
 ## Limitações e Trabalhos Futuros
 
-- Os experimentos consideram ambientes estáticos sem mobilidade do receptor
-- O modelo de sombreamento assume obstáculos com geometria simplificada (bloco quadrado)
+- Os experimentos consideram ambientes estáticos sem mobilidade do receptor.
+- O modelo de sombreamento assume obstáculos com geometria simplificada (bloco quadrado).
+- O problema de representação de entrada do FNO nos experimentos EXP3.1-v2 e EXP3.3-v2 (campo
+  espacial predito sem estrutura física coerente, apesar de métricas de perda favoráveis) é um
+  problema em aberto e prioritário para a próxima iteração.
+- O curriculum learning (EXP6) não confirmou a hipótese de convergência mais estável e precisa de
+  recalibração do cronograma de dificuldade.
 - Extensões futuras incluem: canais dinâmicos (receptor móvel), múltiplos materiais de reflexão,
   validação contra medições experimentais em bancada óptica, e integração completa com a API
-  simbólica do NVIDIA PhysicsNeMo para constraints automáticas via PDEs
+  simbólica do NVIDIA PhysicsNeMo (`physicsnemo.sym`) para constraints automáticas via PDEs.
+
+Descrição completa de cada limitação em [`EXPERIMENTS.md`](EXPERIMENTS.md).
 
 ---
 
@@ -270,7 +257,7 @@ Se este repositório for utilizado em trabalho acadêmico, por favor cite:
                   Comunicação por Luz Visível},
   year         = {2026},
   howpublished = {\url{https://github.com/zyzerkk/vlc-digital-twin}},
-  note         = {Pesquisa iniciada em 2023. Repositório publicado em agosto de 2026}
+  note         = {Pesquisa iniciada em 2023. Repositório reestruturado em agosto de 2026.}
 }
 ```
 
@@ -278,10 +265,15 @@ Metadados estruturados também estão disponíveis em [`CITATION.cff`](CITATION.
 
 ---
 
+## Agradecimentos
+
+Ao Prof. Carlos Henrique Barriquello (Departamento de Engenharia Elétrica, UFSM), que apresentou
+o ecossistema NVIDIA Modulus/PhysicsNeMo durante uma bolsa de estudos realizada em seu
+laboratório — ponto de partida direto para esta linha de pesquisa.
+
 ## Contribuição
 
-Contribuições são bem-vindas. Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) para diretrizes de
-estilo de código, processo de pull request e relato de problemas.
+Contribuições são bem-vindas — consulte [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Licença
 

@@ -44,7 +44,7 @@ em sequência (`Ambiente de execução → Executar tudo`).
 
 | Notebook | Conteúdo | Abrir no Colab |
 |---|---|---|
-| `01_experimentos_fundamentais.ipynb` | EXP1–EXP3.3 — validação inicial das PINNs em PyTorch puro | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VlKWCqA-qWl5S8U6YrBW-_edOK3VtGhG?usp=sharing) |
+| `01_experimentos_fundamentais.ipynb` | EXP1–EXP3.3 — validação inicial das PINNs em PyTorch puro | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1VlKWCqA-qWl5S8U6YrBW-_edOK3VtGhG?usp=sharing](https://colab.research.google.com/drive/1_F40307k1pIpIZA3RaKBRxez7I-jgdoC?usp=sharing)) |
 | `02_experimentos_avancados.ipynb` | EXP4–EXP7 — diagnóstico, ablação, curriculum e transfer learning | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1nGXI4HYK6RNzGp_Xo4Ow-kKBXr9JvdkD?usp=sharing) |
 | `03_physicsnemo_v2_nativo.ipynb` | EXP1-v2–EXP3.3-v2 — migração para a API nativa do PhysicsNeMo v2.0 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HGOOW_dF01Ni1Uw9Xu_WA0udb6-6moLM?usp=sharing) |
 
